@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package   Devhh_ProductSibling
+ * @author    Osiozekhai Aliu <aliu@dev-hh.de>
+ * @copyright 2018 Devhh
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @link      begeisternderwahlkampf.de
+ */
+-->
+<config>
+    <modules>
+        <Devhh_ProductSibling>
+            <version>0.0.3</version>
+        </Devhh_ProductSibling>
+    </modules>
+    <global>
+        <resources>
+            <devhh_productsibling_setup>
+                <setup>
+                    <module>Devhh_ProductSibling</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+            </devhh_productsibling_setup>
+        </resources>
+        <helpers>
+            <devhh_productSibling>
+                <class>Devhh_ProductSibling_Helper</class>
+            </devhh_productSibling>
+        </helpers>
+    </global>
+    <frontend>
+        <events>
+            <catalog_block_product_list_collection>
+                <observers>
+                    <devhh_product_list>
+                        <type>singleton</type>
+                        <class>Devhh_ProductSibling_Block_Observer_Product_List</class>
+                        <method>addSiblingProductTaxLinkToCollection</method>
+                    </devhh_product_list>
+                </observers>
+            </catalog_block_product_list_collection>
+        </events>
+    </frontend>
+</config>
